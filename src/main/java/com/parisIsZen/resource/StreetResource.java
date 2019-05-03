@@ -35,10 +35,4 @@ public class StreetResource {
     		return new ResponseEntity<>(streets, HttpStatus.OK);
     	}	
 	}
-	
-	@PostMapping("/streets")
-    public ResponseEntity<Street> createStreets(@RequestBody Street street) {
-        Street createdStreet = streetService.create(street);
-        return new ResponseEntity<>(createdStreet, HttpStatus.CREATED);
-    }
 }

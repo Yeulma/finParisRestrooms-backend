@@ -66,23 +66,5 @@ public class ToiletResource {
     		return new ResponseEntity<>(openToilets, HttpStatus.OK);
     	}	
 	}
-	
-	@PostMapping("/toilets")
-    public ResponseEntity<Toilet> createToilets(@RequestBody Toilet toilet) {
-        Toilet createdToilet = toiletService.create(toilet);
-        return new ResponseEntity<>(createdToilet, HttpStatus.CREATED);
-    }
-	
-	@PutMapping("/toilets/{id}")
-    public ResponseEntity<Toilet> updateToilet(@RequestBody Toilet toilet ,@PathVariable Integer id) {
-    	Toilet toiletStored = toiletService.findById(id.longValue());
-    	if (toiletStored == null) {
-    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);					
-		} else {
-			toiletStored.setTimetable(toilet.getTimetable());
-	        Toilet updatedToilet = toiletService.update(toiletStored);
-	        return new ResponseEntity<>(updatedToilet, HttpStatus.OK);
-		}
-    }
 
 }
